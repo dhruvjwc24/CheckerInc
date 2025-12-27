@@ -4,10 +4,10 @@ import { Pool } from "pg";
 import { config } from "dotenv";
 import * as schema from "./schema";
 
-config({path: "../../.env.local"})
+config({path: ".env.local"})
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-export const db = drizzle(pool, { schema });
+export const db = drizzle(pool, { schema, casing: 'snake_case' });
